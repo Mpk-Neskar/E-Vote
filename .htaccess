@@ -1,0 +1,13 @@
+# Aktifkan modul rewrite
+RewriteEngine On
+
+# Penanganan jika halaman tidak ditemukan (404)
+ErrorDocument 404 /404.php
+
+# Penanganan jika terjadi akses terlarang (403)
+ErrorDocument 403 /403.php
+
+# Hapus ekstensi .php jika file ada
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
