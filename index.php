@@ -75,7 +75,6 @@ $row = mysqli_fetch_assoc($result);
 </head>
 
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="index">E-Vote</a>
@@ -101,19 +100,28 @@ $row = mysqli_fetch_assoc($result);
             </div>
         </div>
     </nav>
+
     <div class="container mt-4">
         <div class="text-center">
             <h1 class="header-title">Selamat Datang Di Website E-Vote Pemilihan Ketua MPK Periode 2023 / 2024</h1>
         </div>
+
         <div class="content-section">
-            <p>Ini adalah sebuah platform voting online untuk membantu pemilihan ketua MPK di sekolah. Prosesnya mudah, cepat, dan efisien. Dengan teknologi, semua siswa dapat terlibat aktif dalam proses pemilihan.</p>
+            <p>E-Vote (Elektronik Voting). Platform yang memberdayakan siswa untuk menyuarakan pendapat mereka dengan penuh keyakinan dan membentuk masa depan sekolah dengan memilih ketua OSIS berikutnya.</p>
             <p>Platform ini mengurangi limbah karena menggunakan teknologi. Pemilih dapat menggunakan laptop, smartphone, atau tablet untuk memberikan suara dengan mudah.</p>
-            <p>E-Voting MPK memiliki fitur keamanan dan perlindungan data untuk memastikan proses yang adil tanpa kecurangan. Solusi ideal untuk meningkatkan transparansi dan partisipasi dalam pemilihan siswa di sekolah.</p>
+
+            <!-- Mulai Vote Button -->
+            <div class="text-center mt-4">
+                <a href="kandidat" class="btn btn-primary btn-lg">Mulai Vote</a>
+            </div>
+
+            <!-- Copyright Section -->
             <p class="text-center mt-4" style="font-size: 1rem;">
-    &copy; 2025 E-Vote. All rights reserved. 
-    <a href="https://github.com/zeonaraa" target="_blank" style="color: #fff; text-decoration: none;">zeonaraa</a>
-</p>
+                &copy; 2025 E-Vote. All rights reserved. 
+                <a href="https://github.com/zeonaraa" target="_blank" style="color: #fff; text-decoration: none;">zeonaraa</a>
+            </p>
         </div>
     </div>
-    </body>
+    <?php include 'assets/footer.php'; ?>
+</body>
 </html>
