@@ -101,25 +101,19 @@ $row = mysqli_fetch_assoc($result);
             </div>
         </div>
     </nav>
-
-    <!-- Main Content -->
     <div class="container mt-4">
         <div class="text-center">
             <h1 class="header-title">Selamat Datang Di Website E-Vote Pemilihan Ketua MPK Periode 2023 / 2024</h1>
         </div>
-
         <div class="content-section">
             <p>Ini adalah sebuah platform voting online untuk membantu pemilihan ketua MPK di sekolah. Prosesnya mudah, cepat, dan efisien. Dengan teknologi, semua siswa dapat terlibat aktif dalam proses pemilihan.</p>
-
             <p>Platform ini mengurangi limbah karena menggunakan teknologi. Pemilih dapat menggunakan laptop, smartphone, atau tablet untuk memberikan suara dengan mudah.</p>
-
             <p>E-Voting MPK memiliki fitur keamanan dan perlindungan data untuk memastikan proses yang adil tanpa kecurangan. Solusi ideal untuk meningkatkan transparansi dan partisipasi dalam pemilihan siswa di sekolah.</p>
+            <p class="text-center mt-4" style="font-size: 1rem;">
+    &copy; 2025 E-Vote. All rights reserved. 
+    <a href="https://github.com/zeonaraa" target="_blank" style="color: #fff; text-decoration: none;">zeonaraa</a>
+</p>
         </div>
     </div>
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
+    </body>
 </html>
