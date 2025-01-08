@@ -23,7 +23,7 @@ $row = mysqli_fetch_assoc($result);
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background: linear-gradient(to bottom, #1e90ff, #4169e1); /* Gradasi Biru */
+            background: #4169e1; /* Gradasi Biru */
             color: #fff;
             font-family: 'Arial', sans-serif;
         }
@@ -103,7 +103,7 @@ $row = mysqli_fetch_assoc($result);
 
     <div class="container mt-4">
         <div class="text-center">
-            <h1 class="header-title">Selamat Datang Di Website E-Vote Pemilihan Ketua MPK Periode 2023 / 2024</h1>
+            <h1 class="header-title">Selamat Datang Di Website E-Vote Pemilihan Ketua MPK Periode 2025 / 2026</h1>
         </div>
 
         <div class="content-section">
@@ -116,10 +116,12 @@ $row = mysqli_fetch_assoc($result);
             </div>
 
             <!-- Copyright Section -->
-            <p class="text-center mt-4" style="font-size: 1rem;">
-                &copy; 2025 E-Vote. All rights reserved. 
-                <a href="https://github.com/zeonaraa" target="_blank" style="color: #fff; text-decoration: none;">zeonaraa</a>
-            </p>
+            <p class="text-center mt-4 text-sm text-white">
+    &copy; 2025 <span class="font-semibold">E-Vote</span>. All rights reserved. 
+    <a href="https://github.com/zeonaraa" style="color: #fff; text-decoration: none;">zeonaraa</a> & 
+    <a href="https://github.com/woodenhara" style="color: #fff; text-decoration: none;">raven</a>
+</p>
+
         </div>
     </div>
     <?php include 'assets/footer.php'; ?>

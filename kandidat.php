@@ -24,7 +24,7 @@ $result = mysqli_query($conn, $query);
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(to bottom, #1e90ff, #4169e1);
+      background:  #4169e1;
       color: #fff;
     }
 
@@ -132,7 +132,7 @@ $result = mysqli_query($conn, $query);
 
   <div class="container">
     <div class="header">
-      <h1>Calon Ketua MPK Periode 2023 - 2024</h1>
+      <h1>Calon Ketua MPK Periode 2025 - 2026</h1>
     </div>
 
     <div class="row" data-aos="fade-up" data-aos-duration="1000">
@@ -143,7 +143,10 @@ $result = mysqli_query($conn, $query);
       ?>
         <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1800">
           <div class="card">
-            <img src="<?php echo $row['pict']; ?>" class="card-img-top" alt="Candidate <?php echo $i; ?>">
+          <img src="<?php echo $row['pict']; ?>" 
+     alt="Candidate <?php echo $i; ?>" 
+     class="w-full h-auto object-cover rounded-lg">
+
             <div class="card-body">
               <h5 class="card-title"><?php echo $row['name']; ?></h5>
               <p class="card-text"><?php echo $row['description']; ?></p>

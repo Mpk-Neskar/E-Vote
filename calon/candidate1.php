@@ -2,7 +2,6 @@
 session_start();
 include '../assets/conn.php';
 
-// Redirect if not logged in
 if (!isset($_SESSION['nisn'])) {
     header('Location: login');
     exit();
@@ -13,7 +12,7 @@ $query = "SELECT * FROM voters WHERE nisn='$nisn'";
 $result = mysqli_query($conn, $query);
 
 if (!$result) {
-    die('Error: ' . mysqli_error($conn)); // Handle SQL query error
+    die('Error: ' . mysqli_error($conn));
 }
 
 $scarpe = mysqli_query($conn, "SELECT * FROM voters WHERE nisn = '$nisn'");
@@ -21,7 +20,6 @@ $row = mysqli_fetch_assoc($scarpe);
 $ready = $row['ready'];
 $nama_voters = $row['name'];
 
-// Redirect if already voted
 if ($ready == 1) {
     echo "<script>window.location = 'already_voted.php';</script>";
     exit();
@@ -104,10 +102,10 @@ if ($ready == 1) {
                 <form method="POST">
                     <div class="col-md-6">
                         <div class="card">
-                            <img src="https://i.pinimg.com/originals/fd/ad/83/fdad83821e23d5e3b0b369c6cf58a453.jpg" class="card-img-top" alt="Candidate 1">
+                            <img src="https://i.postimg.cc/RVHjnzTK/hazel.jpg" class="card-img-top" alt="Candidate 1">
                             <div class="card-body">
-                                <h5 class="card-title">Rizki Rahmat Batubara</h5>
-                                <p class="card-text">Kandidat Ketua MPK Nomor 1 Periode 2023 / 2024</p>
+                                <h5 class="card-title">Hazel Abrial Hamiro</h5>
+                                <p class="card-text">Kandidat Ketua MPK Nomor 1 Periode 2025 / 2026</p>
                                 <button class="btn btn-primary" id="showVisiMisi">Visi Misi</button>
                                 <button class="btn btn-danger" name="submit">Vote</button>
                                 <a href="../kandidat" class="btn btn-secondary">Kembali</a>
@@ -121,19 +119,30 @@ if ($ready == 1) {
 
     <?php include '../assets/footer.php'; ?>
     <script>
-        // Handle "Visi Misi" button click
-        document.getElementById('showVisiMisi').addEventListener('click', function(event) {
-            event.preventDefault();
-            Swal.fire({
-                title: 'Visi Misi Kandidat',
-                html: '<strong>Visi:</strong><br>- Menjadikan Organisasi MPK sebagai Organisasi yang menjunjung tinggi Demokrasi.<br>- Menjadikan Organisasi MPK sebagai wadah untuk membangun kolaborasi dengan pihak OSIS serta dapat menyerap aspirasi siswa siswa SMKN 1 KARAWANG.<br>- Menjadikan MPK sebagai Organisasi yang aktif dan produktif.<br><br>' +
-                    '<strong>Misi:</strong><br>- Selalu ber koordinasi dengan baik antar pengurus OSIS dan pengurus MPK.<br> - Mengedepankan sistem kebersamaan serta kekompakan antara pengurus OSIS dan pengurus MPK.<br> - Menyalurkan aspirasi dari setiap anggota MPK dan menyampaikan pendapatnya untuk mengevaluasi Ketua MPK ataupun anggota MPK lainnya.',
-                icon: 'info',
-                confirmButtonText: 'Tutup'
-            });
-        });
+        document.getElementById('showVisiMisi').addEventListener('click', function (event) {
+    event.preventDefault();
+    
+    Swal.fire({
+        title: 'Visi Misi Kandidat',
+        html: `
+            <strong>Visi:</strong><br>
+            Mewujudkan MPK SMK Negeri 1 Karawang sebagai organisasi yang profesional, transparan, 
+            dan berkontribusi lebih bagi sekolah dengan berlandaskan adab dan moral.<br><br>
 
-        // Confirm vote action
+            <strong>Misi:</strong><br>
+            - Menekankan dengan tegas kepada seluruh anggota maupun pengurus mengenai aturan yang sudah tertulis dalam AD/ART.<br>
+            - Menjalankan forum yang melibatkan seluruh anggota MPK untuk mendengarkan dan mengevaluasi progres dari BPH maupun komisi.<br>
+            - Menjalankan komunikasi dengan OSIS maupun organisasi atau ekstrakurikuler lain guna mewujudkan dan menjalankan program kerja yang dijalani.<br><br>
+
+            <strong>Proker:</strong><br>
+            - Menjalankan dan mengevaluasi program kerja lama yang sudah terjalankan sebelumnya seperti E-Vote, Bank Sampah, dan Manajemen Class.<br>
+            - Mengadakan forum bulanan untuk membahas progres dari BPH maupun Komisi (untuk memenuhi misi kedua).<br><br>
+        `,
+        icon: 'info',
+        confirmButtonText: 'Tutup'
+    });
+});
+
         <?php if (isset($_POST['submit'])): ?>
             Swal.fire({
                 title: 'Konfirmasi',

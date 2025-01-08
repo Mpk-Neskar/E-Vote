@@ -2,7 +2,6 @@
 session_start();
 include '../assets/conn.php';
 
-// Redirect if not logged in
 if (!isset($_SESSION['nisn'])) {
     header('Location: login');
     exit();
@@ -13,7 +12,7 @@ $query = "SELECT * FROM voters WHERE nisn='$nisn'";
 $result = mysqli_query($conn, $query);
 
 if (!$result) {
-    die('Error: ' . mysqli_error($conn)); // Handle SQL query error
+    die('Error: ' . mysqli_error($conn));
 }
 
 $scarpe = mysqli_query($conn, "SELECT * FROM voters WHERE nisn = '$nisn'");
@@ -21,7 +20,6 @@ $row = mysqli_fetch_assoc($scarpe);
 $ready = $row['ready'];
 $nama_voters = $row['name'];
 
-// Redirect if already voted
 if ($ready == 1) {
     echo "<script>window.location = 'already_voted.php';</script>";
     exit();
@@ -97,17 +95,17 @@ if ($ready == 1) {
 
     <div class="container mt-1">
         <center>
-            <h1 class="my-3">Kandidat Ketua MPK Nomor 1</h1>
+            <h1 class="my-3">Kandidat Ketua MPK Nomor 2</h1>
         </center>
         <div class="row">
             <center>
                 <form method="POST">
                     <div class="col-md-6">
                         <div class="card">
-                            <img src="https://i.pinimg.com/originals/fd/ad/83/fdad83821e23d5e3b0b369c6cf58a453.jpg" class="card-img-top" alt="Candidate 1">
+                            <img src="https://i.postimg.cc/7LccdH01/adit.jpg" class="card-img-top" alt="Candidate 1">
                             <div class="card-body">
-                                <h5 class="card-title">Rizki Rahmat Batubara</h5>
-                                <p class="card-text">Kandidat Ketua MPK Nomor 1 Periode 2023 / 2024</p>
+                                <h5 class="card-title">Adithia Pratama</h5>
+                                <p class="card-text">Kandidat Ketua MPK Nomor 2 Periode 2025 / 2026</p>
                                 <button class="btn btn-primary" id="showVisiMisi">Visi Misi</button>
                                 <button class="btn btn-danger" name="submit">Vote</button>
                                 <a href="../kandidat" class="btn btn-secondary">Kembali</a>
@@ -121,19 +119,29 @@ if ($ready == 1) {
 
     <?php include '../assets/footer.php'; ?>
     <script>
-        // Handle "Visi Misi" button click
-        document.getElementById('showVisiMisi').addEventListener('click', function(event) {
-            event.preventDefault();
-            Swal.fire({
-                title: 'Visi Misi Kandidat',
-                html: '<strong>Visi:</strong><br>- Menjadikan Organisasi MPK sebagai Organisasi yang menjunjung tinggi Demokrasi.<br>- Menjadikan Organisasi MPK sebagai wadah untuk membangun kolaborasi dengan pihak OSIS serta dapat menyerap aspirasi siswa siswa SMKN 1 KARAWANG.<br>- Menjadikan MPK sebagai Organisasi yang aktif dan produktif.<br><br>' +
-                    '<strong>Misi:</strong><br>- Selalu ber koordinasi dengan baik antar pengurus OSIS dan pengurus MPK.<br> - Mengedepankan sistem kebersamaan serta kekompakan antara pengurus OSIS dan pengurus MPK.<br> - Menyalurkan aspirasi dari setiap anggota MPK dan menyampaikan pendapatnya untuk mengevaluasi Ketua MPK ataupun anggota MPK lainnya.',
-                icon: 'info',
-                confirmButtonText: 'Tutup'
-            });
-        });
+        document.getElementById('showVisiMisi').addEventListener('click', function (event) {
+    event.preventDefault();
+    
+    Swal.fire({
+        title: 'Visi Misi Kandidat',
+        html: `
+            <strong>Visi:</strong><br>
+            Mewujudkan MPK SMKN 1 Karawang sebagai 
+            organisasi yang unggul,berintegritas dalam mengembangkan pontensi anggota.<br><br>
 
-        // Confirm vote action
+            <strong>Misi:</strong><br>
+            - Membangun kesadaran dan komitmen anggota terhadap nilai-nilai kejujuran, solidaritas dan tanggung jawab.<br>
+            - Meningkatkan kualitas kerjasama dengan organisasi dan eskul lain nya untuk mencapai tujuan bersama.<br><br>
+
+            <strong>Proker:</strong><br>
+            - Menjalankan program kerja yang sudah ada seperti bank sampah & evote.
+ teknis       bank sampah:dengan menyetorkan sampah botol plastik di hari Jumat setelah pulang sekolah,dan Memilah 2 Minggu sekali di hari Jumat,pemberian uang setelah 2 hari penyetoran ke pengepul.<br><br>
+        `,
+        icon: 'info',
+        confirmButtonText: 'Tutup'
+    });
+});
+
         <?php if (isset($_POST['submit'])): ?>
             Swal.fire({
                 title: 'Konfirmasi',
@@ -160,7 +168,7 @@ if ($ready == 1) {
                             Swal.fire('Oops...', 'Terjadi kesalahan saat memproses vote. Silakan coba lagi.', 'error');
                         }
                     };
-                    xhr.open('POST', 'update_vote1.php');
+                    xhr.open('POST', 'update_vote2.php');
                     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                     xhr.send('vote=yes');
                 }

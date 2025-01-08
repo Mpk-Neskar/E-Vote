@@ -2,7 +2,6 @@
 session_start();
 include '../assets/conn.php';
 
-// Redirect if not logged in
 if (!isset($_SESSION['nisn'])) {
     header('Location: login');
     exit();
@@ -13,7 +12,7 @@ $query = "SELECT * FROM voters WHERE nisn='$nisn'";
 $result = mysqli_query($conn, $query);
 
 if (!$result) {
-    die('Error: ' . mysqli_error($conn)); // Handle SQL query error
+    die('Error: ' . mysqli_error($conn));
 }
 
 $scarpe = mysqli_query($conn, "SELECT * FROM voters WHERE nisn = '$nisn'");
@@ -21,7 +20,6 @@ $row = mysqli_fetch_assoc($scarpe);
 $ready = $row['ready'];
 $nama_voters = $row['name'];
 
-// Redirect if already voted
 if ($ready == 1) {
     echo "<script>window.location = 'already_voted.php';</script>";
     exit();
@@ -97,17 +95,17 @@ if ($ready == 1) {
 
     <div class="container mt-1">
         <center>
-            <h1 class="my-3">Kandidat Ketua MPK Nomor 1</h1>
+            <h1 class="my-3">Kandidat Ketua MPK Nomor 3</h1>
         </center>
         <div class="row">
             <center>
                 <form method="POST">
                     <div class="col-md-6">
                         <div class="card">
-                            <img src="https://i.pinimg.com/originals/fd/ad/83/fdad83821e23d5e3b0b369c6cf58a453.jpg" class="card-img-top" alt="Candidate 1">
+                            <img src="https://i.postimg.cc/MpDxvSWt/nazwha.jpg" class="card-img-top" alt="Candidate 1">
                             <div class="card-body">
-                                <h5 class="card-title">Rizki Rahmat Batubara</h5>
-                                <p class="card-text">Kandidat Ketua MPK Nomor 1 Periode 2023 / 2024</p>
+                                <h5 class="card-title">Nazwha Amelia</h5>
+                                <p class="card-text">Kandidat Ketua MPK Nomor 3 Periode 2025 / 2026</p>
                                 <button class="btn btn-primary" id="showVisiMisi">Visi Misi</button>
                                 <button class="btn btn-danger" name="submit">Vote</button>
                                 <a href="../kandidat" class="btn btn-secondary">Kembali</a>
@@ -121,19 +119,31 @@ if ($ready == 1) {
 
     <?php include '../assets/footer.php'; ?>
     <script>
-        // Handle "Visi Misi" button click
-        document.getElementById('showVisiMisi').addEventListener('click', function(event) {
-            event.preventDefault();
-            Swal.fire({
-                title: 'Visi Misi Kandidat',
-                html: '<strong>Visi:</strong><br>- Menjadikan Organisasi MPK sebagai Organisasi yang menjunjung tinggi Demokrasi.<br>- Menjadikan Organisasi MPK sebagai wadah untuk membangun kolaborasi dengan pihak OSIS serta dapat menyerap aspirasi siswa siswa SMKN 1 KARAWANG.<br>- Menjadikan MPK sebagai Organisasi yang aktif dan produktif.<br><br>' +
-                    '<strong>Misi:</strong><br>- Selalu ber koordinasi dengan baik antar pengurus OSIS dan pengurus MPK.<br> - Mengedepankan sistem kebersamaan serta kekompakan antara pengurus OSIS dan pengurus MPK.<br> - Menyalurkan aspirasi dari setiap anggota MPK dan menyampaikan pendapatnya untuk mengevaluasi Ketua MPK ataupun anggota MPK lainnya.',
-                icon: 'info',
-                confirmButtonText: 'Tutup'
-            });
-        });
+        document.getElementById('showVisiMisi').addEventListener('click', function (event) {
+    event.preventDefault();
+    
+    Swal.fire({
+        title: 'Visi Misi Kandidat',
+        html: `
+            <strong>Visi:</strong><br>
+            Menjadikan MPK SMK Negeri 1 Karawang menjadi organisasi yang dapat ber komunikasi baik,
+            berorientasi pada solusi, dan berkontribusi positif bagi masyarakat sekolah.<br><br>
 
-        // Confirm vote action
+            <strong>Misi:</strong><br>
+            - Membangun kolaborasi solid, seperti menjalankan sebuah kegiatan yang melibatkan organisasi lain ataupun pihak sekolah dengan tujuan yang sama.<br>
+            - Mewujudkan komunikasi yang baik secara internal maupun eksternal seperti mengadakan forum Musyawarah.<br>
+            - Menjalankan, mengevaluasi, dan menemukan solusi dari setiap program kerja agar setiap proker dapat berjalan dengan sebaik-baiknya.<br><br>
+
+            <strong>Proker:</strong><br>
+            - "HATUKU" Hari Tukar Buku, teknis dari kegiatan ini, dimana setiap anggota saling bertukar buku yang sudah mereka baca dengan selang waktu dua minggu sekali atau sebulan sekali, kegiatan ini bertujuan untuk bertukar ilmu, meningkatkan minat baca, dan mempererat hubungan keanggotaan.<br>
+            - Menjalankan Program kerja yang sudah ada di MPK, seperti, Bank Sampah, E-vote, & 
+Management Class = Program kerja ini adalah kegiatan seperti penilaian kelas terbersih. Jangka waktu dari kegiatan ini bisa sekitar 2 Minggu 1x, Tujuan adanya kegiatan ini juga agar tercipta lingkungan kelas yang bersih, rapih, & nyaman. Bisa juga kelas yang terpilih, akan mendapatkan reward, contohnya piala bergilir, yang di mana reward ini pasti akan membuat siswa lebih bersemangat dalan menjalankan kegiatan.<br><br>
+        `,
+        icon: 'info',
+        confirmButtonText: 'Tutup'
+    });
+});
+
         <?php if (isset($_POST['submit'])): ?>
             Swal.fire({
                 title: 'Konfirmasi',
@@ -160,7 +170,7 @@ if ($ready == 1) {
                             Swal.fire('Oops...', 'Terjadi kesalahan saat memproses vote. Silakan coba lagi.', 'error');
                         }
                     };
-                    xhr.open('POST', 'update_vote1.php');
+                    xhr.open('POST', 'update_vote3.php');
                     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                     xhr.send('vote=yes');
                 }
